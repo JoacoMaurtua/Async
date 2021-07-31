@@ -41,7 +41,7 @@ createPost({title:'Post Four',body:'This is a post four'})
 
 //Trabajando con varias promesas a la vez:
 
-const promise1 = Promise.resolve('Hello world');
+/* const promise1 = Promise.resolve('Hello world');
 const promise2 = 100;
 const promise3 = new Promise((resolve,reject)=>{
   setTimeout(resolve,2000,'Goodbye')
@@ -56,7 +56,33 @@ const promise4 = fetch('https://jsonplaceholder.typicode.com/users')
 Promise.all([promise1,promise2,promise3,promise4])
 .then(values=>
   console.log(values)
-);
+); */
+
+ // Async / Await
+
+ async function init(){
+    await createPost({title: 'Post Three',
+                      body: 'This is post three'});
+    getPosts();
+ }
+
+ init();
+
+
+
+// Async / Await /Fetch
+async function fetchUsers(){
+  const response = await fetch('https://jsonplaceholder.typicode.com/users');
+  
+  const data = await response.json();
+
+  console.log(data);
+}
+
+fetchUsers();
+
+
+//
 
 
 
